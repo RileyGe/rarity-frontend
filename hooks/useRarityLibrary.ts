@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { utils } from 'ethers'
 
 export interface SummonerFullData {
-    id: string
+    id: number
     ability_scores: {
         attributes: {
             _cha: number
@@ -121,7 +121,7 @@ export default function useRarityLibrary(): LibraryInterface {
                                     claimed: parseInt(utils.formatUnits(value.gold.claimed, 'ether')),
                                 },
                                 materials: {
-                                    balance: parseInt(utils.formatUnits(value.materials[0].balance, 'ether')),
+                                    balance: parseInt(value.materials[0].balance),
                                     scout: parseInt(value.materials[0].scout.toString()),
                                     log: parseInt(value.materials[0].log.toString()),
                                 },
