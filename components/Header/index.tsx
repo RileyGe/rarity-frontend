@@ -3,7 +3,7 @@ import { Popover } from '@headlessui/react'
 import Web3Status from '../Web3Status'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
 import { useETHBalances } from '../../state/wallet/hooks'
-import LangSwitcher from '../LanguageSwitch'
+// import LangSwitcher from '../LanguageSwitch'
 import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import Link from 'next/link'
@@ -48,7 +48,7 @@ function AppBar(): JSX.Element {
 
     function names(): JSX.Element {
         return (
-            <Link href="https://names.rarity.game" passHref={true}>
+            <Link href="https://names.rarity.saibo.fan" passHref={true}>
                 <div className="cursor-pointer hover:border-white border-transparent border-2 rounded-xl py-1 px-2 mx-1">
                     <h2>{i18n._(t`names`)}</h2>
                 </div>
@@ -56,18 +56,18 @@ function AppBar(): JSX.Element {
         )
     }
 
-    function market(): JSX.Element {
-        return (
-            <Link
-                href="https://paintswap.finance/nfts/collections/0xc73e1237a5a9ba5b0f790b6580f32d04a727dc19"
-                passHref={true}
-            >
-                <div className="cursor-pointer hover:border-white border-transparent border-2 rounded-xl py-1 px-2 mx-1">
-                    <h2>{i18n._(t`market`)}</h2>
-                </div>
-            </Link>
-        )
-    }
+    // function market(): JSX.Element {
+    //     return (
+    //         <Link
+    //             href="https://paintswap.finance/nfts/collections/0xc73e1237a5a9ba5b0f790b6580f32d04a727dc19"
+    //             passHref={true}
+    //         >
+    //             <div className="cursor-pointer hover:border-white border-transparent border-2 rounded-xl py-1 px-2 mx-1">
+    //                 <h2>{i18n._(t`market`)}</h2>
+    //             </div>
+    //         </Link>
+    //     )
+    // }
 
     const [modal, setModal] = useState(false)
 
@@ -95,7 +95,7 @@ function AppBar(): JSX.Element {
                                             {play()}
                                             {analytics()}
                                             {names()}
-                                            {market()}
+                                            {/*{market()}*/}
                                             {account && (
                                                 <button
                                                     onClick={() => setModal(true)}
@@ -110,9 +110,9 @@ function AppBar(): JSX.Element {
                                 <div className="fixed bottom-0 right-0 z-40 flex flex-row items-center justify-center w-full p-4 lg:w-auto bg-black lg:relative lg:p-0 lg:bg-transparent">
                                     <div className="flex items-center justify-between w-full space-x-2 sm:justify-end z-20">
                                         <div className="w-auto mx-auto flex items-center rounded p-0.5 whitespace-nowrap text-sm font-bold cursor-pointer select-none pointer-events-auto z-20">
-                                            <div className="hidden md:inline-block mx-2">
-                                                <LangSwitcher />
-                                            </div>
+                                            {/*<div className="hidden md:inline-block mx-2">*/}
+                                            {/*    <LangSwitcher />*/}
+                                            {/*</div>*/}
                                             {account && chainId && userEthBalance && (
                                                 <>
                                                     <div className="px-3 mx-3 py-2 text-primary text-bold border-white border-2 rounded-lg">
@@ -170,7 +170,7 @@ function AppBar(): JSX.Element {
                                 {play()}
                                 {analytics()}
                                 {names()}
-                                {market()}
+                                {/*{market()}*/}
                                 {account && (
                                     <button
                                         onClick={() => setModal(true)}

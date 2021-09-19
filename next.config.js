@@ -22,9 +22,11 @@ const nextConfig = {
     },
     reactStrictMode: true,
     i18n: {
+        // locales: ["en", "zh-CN", "zh-TW"],
+        // defaultLocale: "zh-CN",
         localeDetection: true,
         locales,
-        defaultLocale: sourceLocale,
+        defaultLocale: 'zh_CN',
     },
     async redirects() {
         return [
