@@ -123,12 +123,12 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                     <div className="grid grid-cols-1 md:grid-cols-2 w-full px-4 mt-2">
                         <div>
                             <span className="uppercase">{i18n._(t`level`)}</span>
-                            <span className="text-transparent -ml-1 md:ml-2">&nbsp;</span>:
+                            <span>&nbsp;</span>:
                             <span className="ml-1.5">{summoner.base._level.toString()}</span>
                         </div>
                         <div>
                             <span className="uppercase">{i18n._(t`ap`)}</span>
-                            <span className="text-transparent ml-8 md:ml-8">&nbsp;</span>:
+                            <span>&nbsp;</span>:
                             <span className="ml-1.5">{totalAP.toString()}</span>
                         </div>
                     </div>
@@ -137,12 +137,12 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                     <div className="grid grid-cols-1 md:grid-cols-2 w-full px-4 md:mt-2">
                         <div>
                             <span className="uppercase">{i18n._(t`xp`)}</span>
-                            <span className="text-transparent ml-8 md:ml-11">&nbsp;</span>:
+                            <span>&nbsp;</span>:
                             <span className="ml-1.5">{summoner.base._xp}</span>
                         </div>
                         <div>
                             <span className="uppercase">{i18n._(t`gold`)}</span>
-                            <span className="text-transparent ml-2 md:ml-2">&nbsp;</span>:
+                            <span>&nbsp;</span>:
                             <span className="ml-1.5">{summoner.gold.balance}</span>
                         </div>
                     </div>
@@ -165,7 +165,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`str`)}</span>
-                                <span className="text-transparent ml-2 md:ml-5">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._str + additions['str']}
                                 </span>
@@ -202,7 +202,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`int`)}</span>
-                                <span className="text-transparent ml-3 md:ml-3">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._int + additions['int']}
                                 </span>
@@ -243,7 +243,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`dex`)}</span>
-                                <span className="text-transparent ml-2 md:ml-5">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._dex + additions['dex']}
                                 </span>
@@ -280,7 +280,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`wis`)}</span>
-                                <span className="text-transparent ml-3 md:ml-3">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._wis + additions['wis']}
                                 </span>
@@ -321,7 +321,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`con`)}</span>
-                                <span className="text-transparent ml-2 md:ml-5">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._con + additions['con']}
                                 </span>
@@ -358,7 +358,7 @@ function SummonerStatsCard({ summoner }: { summoner: SummonerFullData }): JSX.El
                             </div>
                             <div>
                                 <span className="uppercase">{i18n._(t`cha`)}</span>
-                                <span className="text-transparent ml-2 md:ml-2">&nbsp;</span>:
+                                <span>&nbsp;&nbsp;&nbsp;</span>:
                                 <span className="ml-1.5">
                                     {summoner.ability_scores.attributes._cha + additions['cha']}
                                 </span>

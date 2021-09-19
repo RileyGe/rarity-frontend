@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Bold';
-    src: url('/fonts/work_sans_bold.ttf');
-}
+/*@font-face {*/
+/*    font-family: 'Bold';*/
+/*    src: url('/fonts/work_sans_bold.ttf');*/
+/*}*/
 
 @font-face {
     font-family: 'Regular';
-    src: url('/fonts/work_sans_regular.ttf');
+    src: url('/fonts/fzyt.ttf');
 }
 
 @font-face {
     font-family: 'Pixelmix';
-    src: url('/fonts/pixelmix.ttf');
+    src: url('/fonts/fzlbjt.ttf');
 }
 
 html {
@@ -44,7 +44,8 @@ body {
 }
 
 h1 {
-    font-family: 'Bold', serif;
+    font-family: 'Regular', serif;
+    font-weight: bold;
 }
 
 h2,

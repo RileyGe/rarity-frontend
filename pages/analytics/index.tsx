@@ -146,7 +146,7 @@ export default function Profile(): JSX.Element {
                                         return (
                                             <div key={_class.id}>
                                                 <div className="border-white text-xs w-32  bg-card-bottom px-2 py-1 text-center border-2 rounded-2xl">
-                                                    <span className="uppercase">{_class.id}</span>
+                                                    <span className="uppercase">{i18n._(_class.id)}</span>
                                                 </div>
                                                 <div className="mt-2 text-xs">
                                                     <span className="uppercase">{i18n._(t`summoners`)} </span>
