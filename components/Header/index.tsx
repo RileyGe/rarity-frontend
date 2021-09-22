@@ -85,8 +85,8 @@ function AppBar(): JSX.Element {
                                 <div className="flex items-center z-10">
                                     <Link href="/" passHref={true}>
                                         <div className="uppercase cursor-pointer text-center tracking-widest text-xl">
-                                            <h1>RARITY</h1>
-                                            <h1>Adventure</h1>
+                                            <h1>召唤</h1>
+                                            <h1>英雄</h1>
                                         </div>
                                     </Link>
                                     <div className="hidden md:block sm:ml-2">
