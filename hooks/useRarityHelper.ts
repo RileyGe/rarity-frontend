@@ -5,7 +5,7 @@ import useActiveWeb3React from './useActiveWeb3React'
 import { RARITY_HELPER_ADDRESS } from '../constants'
 
 interface HelperInterface {
-    adventure: (ids: number[]) => Promise<void>
+    adventure: (ids: number[], tips) => Promise<void>
     adventure_donate: (ids: number[]) => Promise<void>
     cellar: (ids: number[], approval: number[]) => Promise<void>
     cellar_donate: (ids: number[], approval: number[]) => Promise<void>
@@ -23,10 +23,10 @@ export default function useRarityHelper(): HelperInterface {
     const { library, account } = useActiveWeb3React()
 
     const adventure = useCallback(
-        async (ids: number[]): Promise<void> => {
+        async (ids: number[], tips = 0): Promise<void> => {
             return new Promise(async (resolve, reject) => {
                 try {
-                    const tx = await helper?.adventure(ids)
+                    const tx = await helper?.adventure(ids, tips)
                     await tx.wait()
                     resolve()
                 } catch (e) {
