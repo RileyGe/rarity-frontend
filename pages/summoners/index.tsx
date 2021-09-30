@@ -81,6 +81,12 @@ export default function Summoners(): JSX.Element {
                                 <h1 className="text-lg">{i18n._(t`one-click`)}</h1>
                                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 text-xs gap-y-3">
                                     <button
+                                        className="p-2 border-white border-2 bg-background-contrast rounded-lg mx-1 uppercase"
+                                        onClick={() => setModal(Modal.DAYCARE)}
+                                    >
+                                        {i18n._(t`daycare`)}
+                                    </button>
+                                    <button
                                         className={classNames(
                                             'p-2 border-white border-2 bg-background-contrast rounded-lg mx-1 uppercase',
                                             adventure.length === 0 ? 'opacity-50' : ''
@@ -120,12 +126,7 @@ export default function Summoners(): JSX.Element {
                                         <p>{i18n._(t`dungeon`)}</p>
                                         <p className="mt-1">{dungeon.length}</p>
                                     </button>
-                                    <button
-                                        className="p-2 border-white border-2 bg-background-contrast rounded-lg mx-1 uppercase"
-                                        onClick={() => setModal(Modal.DAYCARE)}
-                                    >
-                                        {i18n._(t`daycare`)}
-                                    </button>
+
                                 </div>
                             </div>
                         </div>
