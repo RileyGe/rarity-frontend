@@ -26,7 +26,8 @@ export default function useRarityHelper(): HelperInterface {
         async (ids: number[], tips = 0): Promise<void> => {
             return new Promise(async (resolve, reject) => {
                 try {
-                    const tx = await helper?.adventure(ids, tips)
+                    const fee = utils.parseUnits(tips.toString(), 'ether')
+                    const tx = await helper?.adventure(ids, {value: fee})
                     await tx.wait()
                     resolve()
                 } catch (e) {

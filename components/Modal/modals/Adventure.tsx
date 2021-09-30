@@ -25,7 +25,7 @@ export default function AdventureModal({ open, closeFunction, summoners }: Adven
     const { isApprovedForAll, setApprovalForAll } = useRarity()
     const { adventure, adventure_donate } = useRarityHelper()
 
-    const [days, setDays] = useState(0)
+    const [days, setDays] = useState(0.0)
 
     const [approved, setApproved] = useState(false)
 
@@ -133,7 +133,8 @@ export default function AdventureModal({ open, closeFunction, summoners }: Adven
                                             给开发者
                                             <input
                                                 type="number"
-                                                className="p-2 text-background-end"
+                                                className="p-2 w-1"
+                                                value={0.1}
                                                 onChange={(v) => setDays(parseFloat(v.target.value))}
                                             /> FTM 买杯咖啡
                                         </div>
