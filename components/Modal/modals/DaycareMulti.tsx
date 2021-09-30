@@ -96,12 +96,16 @@ export default function DaycareMultiModal({ open, closeFunction, summoners }: Tr
                         </div>
                     </>
                 ) : (
-                    <button
-                        onClick={() => approveHelper()}
-                        className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
-                    >
-                        {i18n._(t`approve helper`)}
-                    </button>
+                    <>
+                        <div className="pb-8 text-center">
+                            <button
+                                onClick={() => approveHelper()}
+                                className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
+                            >
+                                {i18n._(t`approve helper`)}
+                            </button>
+                        </div>
+                    </>
                 )}
 
             </div>

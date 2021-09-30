@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Popover } from '@headlessui/react'
 import Web3Status from '../Web3Status'
 import { useActiveWeb3React } from '../../hooks/useActiveWeb3React'
@@ -8,6 +8,18 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import Link from 'next/link'
 import DonateModal from '../Modal/modals/Donate'
+import DaycareMultiModal from '../Modal/modals/DaycareMulti'
+import { SummonerFullData } from '../../hooks/useRarityLibrary'
+import { calcXPForNextLevel } from '../../functions/calcXPForNextLevel'
+import { useSummoners } from '../../state/summoners/hooks'
+
+enum Modal {
+    DONATE = 1,
+    // LEVELUP,
+    // GOLD,
+    // DUNGEON,
+    DAYCARE,
+}
 
 function AppBar(): JSX.Element {
     const { i18n } = useLingui()
@@ -26,7 +38,7 @@ function AppBar(): JSX.Element {
         )
     }
 
-    function summoners(): JSX.Element {
+    function summoners_link(): JSX.Element {
         return (
             <Link href="/summoners" passHref={true}>
                 <div className="cursor-pointer hover:border-white border-transparent border-2 rounded-xl py-1 px-2">
@@ -69,14 +81,21 @@ function AppBar(): JSX.Element {
     //     )
     // }
 
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(0)
+    const s = useSummoners()
+    const [summoners, setSummoners] = useState<SummonerFullData[]>(s)
+    // const [parsedSummoners, setParsedSummoners] = useState<SummonerFullData[]>(summoners)
+    useEffect(() => {
+        setSummoners(s)
+    }, [s])
 
     function close() {
-        setModal(false)
+        setModal(0)
     }
     return (
         <header className="flex-shrink-0 w-full z-30">
-            <DonateModal open={modal} closeFunction={close} />
+            <DonateModal open={modal === Modal.DONATE} closeFunction={close} />
+            <DaycareMultiModal open={modal === Modal.DAYCARE} closeFunction={close} summoners={summoners} />
             <Popover as="nav" className="w-full bg-transparent header-border-b">
                 {({ open }) => (
                     <>
@@ -91,14 +110,36 @@ function AppBar(): JSX.Element {
                                     </Link>
                                     <div className="hidden md:block sm:ml-2">
                                         <div className="flex uppercase">
-                                            {summoners()}
+                                            {<button
+                                                // onClick={() => setModal(true)}
+                                                onClick={() => setModal(Modal.DAYCARE)}
+                                                className="uppercase border-contrast border-transparent border-2 rounded-xl py-1 px-2 mx-1"
+                                            >
+                                                <h2>{i18n._(t`daycare`)}</h2>
+                                            </button>
+
+
+
+
+                                            //     <button
+                                            //     className="p-2 border-white border-2 bg-background-contrast rounded-lg mx-1 uppercase"
+                                            //     onClick={() => setModal(Modal.DAYCARE)}
+                                            //     >
+                                            // {i18n._(t`daycare`)}
+                                            //     </button>
+
+
+
+
+                                            }
+                                            {summoners_link()}
                                             {play()}
                                             {analytics()}
                                             {names()}
                                             {/*{market()}*/}
                                             {account && (
                                                 <button
-                                                    onClick={() => setModal(true)}
+                                                    onClick={() => setModal(Modal.DONATE)}
                                                     className="uppercase border-contrast border-transparent border-2 rounded-xl py-1 px-2 mx-1"
                                                 >
                                                     <h2>{i18n._(t`Donate`)}</h2>
@@ -166,14 +207,14 @@ function AppBar(): JSX.Element {
 
                         <Popover.Panel className="sm:hidden uppercase">
                             <div className="flex flex-col px-4 pt-2 pb-3 space-y-1 text-center">
-                                {summoners()}
+                                {summoners_link()}
                                 {play()}
                                 {analytics()}
                                 {names()}
                                 {/*{market()}*/}
                                 {account && (
                                     <button
-                                        onClick={() => setModal(true)}
+                                        onClick={() => setModal(Modal.DONATE)}
                                         className="uppercase border-contrast border-transparent border-2 rounded-xl py-1 px-2 mx-1"
                                     >
                                         <h2>{i18n._(t`Donate`)}</h2>
