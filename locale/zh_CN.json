@@ -6,11 +6,11 @@
   "Are you sure you want to delete this summoner?": "您确定要删除此英雄吗？",
   "Assigning points": "分配点数",
   "Assigning skill": "分配技能",
-  "BUILT BY": "创建者",
-  "CREATED BY": "制作者",
+  "BUILT BY": "Discord",
+  "CREATED BY": "电报",
   "Claiming gold": "收集金币",
   "Click here to mint random classes": "随机召唤一名英雄",
-  "DESIGNED BY": "设计者",
+  "DESIGNED BY": "Twitter",
   "Deleting summoner": "正在刪除",
   "Donate": "捐赠",
   "Donating! Thanks!": "",
@@ -106,7 +106,7 @@
   "register summoners": "注册托管服务",
   "rogue": "侠盗",
   "select summoner": "选择英雄",
-  "send summoners": "去探险！",
+  "send summoners": "送所有英雄去探险！",
   "send with 0.1 FTM tip for devs": "给开发者打赏 0.1FTM 的小费",
   "skill action": "點數動作",
   "skill check": "點數檢查",
@@ -164,5 +164,7 @@
   "Tumble": "翻滚",
   "Use Magic Device": "使用魔法道具",
   "Use Rope": "使用绳子",
-  "Sending Tip:": "发送小费"
+  "Sending Tip:": "发送小费",
+  "send summoners level up": "升级所有英雄！",
+  "send summoners to cellar": "所有英雄去地下城探险！"
 }

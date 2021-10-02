@@ -24,6 +24,8 @@ export default function DungeonModal({ open, closeFunction, summoners }: Dungeon
 
     const { isApprovedForAll, setApprovalForAll } = useRarity()
 
+    const [days, setDays] = useState(0.1)
+
     const { cellar, cellar_donate, is_approved } = useRarityHelper()
 
     const [approved, setApproved] = useState(false)
@@ -72,43 +74,43 @@ export default function DungeonModal({ open, closeFunction, summoners }: Dungeon
         }
     }
 
-    async function submitTIP() {
-        const chunks = chunkArrayByNumber(summoners, 100)
-        for (let i = 0; i < chunks.length; i++) {
-            const chunk_summoners = chunks[i].map((s) => {
-                return s.id
-            })
-            const approvals = await is_approved(chunk_summoners)
-            const summoners_approve = []
-            for (let j = 0; j < approvals.length; j++) {
-                if (!approvals[j]) {
-                    summoners_approve.push(chunk_summoners[j])
-                }
-            }
-
-            if (i === 0) {
-                await toast.promise(cellar_donate(chunk_summoners, summoners_approve), {
-                    loading: (
-                        <b>
-                            {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
-                        </b>
-                    ),
-                    success: <b>{i18n._(t`Success`)}</b>,
-                    error: <b>{i18n._(t`Failed`)}</b>,
-                })
-            } else {
-                await toast.promise(cellar(chunk_summoners, summoners_approve), {
-                    loading: (
-                        <b>
-                            {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
-                        </b>
-                    ),
-                    success: <b>{i18n._(t`Success`)}</b>,
-                    error: <b>{i18n._(t`Failed`)}</b>,
-                })
-            }
-        }
-    }
+    // async function submitTIP() {
+    //     const chunks = chunkArrayByNumber(summoners, 100)
+    //     for (let i = 0; i < chunks.length; i++) {
+    //         const chunk_summoners = chunks[i].map((s) => {
+    //             return s.id
+    //         })
+    //         const approvals = await is_approved(chunk_summoners)
+    //         const summoners_approve = []
+    //         for (let j = 0; j < approvals.length; j++) {
+    //             if (!approvals[j]) {
+    //                 summoners_approve.push(chunk_summoners[j])
+    //             }
+    //         }
+    //
+    //         if (i === 0) {
+    //             await toast.promise(cellar_donate(chunk_summoners, summoners_approve), {
+    //                 loading: (
+    //                     <b>
+    //                         {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
+    //                     </b>
+    //                 ),
+    //                 success: <b>{i18n._(t`Success`)}</b>,
+    //                 error: <b>{i18n._(t`Failed`)}</b>,
+    //             })
+    //         } else {
+    //             await toast.promise(cellar(chunk_summoners, summoners_approve), {
+    //                 loading: (
+    //                     <b>
+    //                         {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
+    //                     </b>
+    //                 ),
+    //                 success: <b>{i18n._(t`Success`)}</b>,
+    //                 error: <b>{i18n._(t`Failed`)}</b>,
+    //             })
+    //         }
+    //     }
+    // }
 
     return (
         <HeadlessUIModal isOpen={open} onDismiss={closeFunction}>
@@ -127,21 +129,32 @@ export default function DungeonModal({ open, closeFunction, summoners }: Dungeon
                             {approved ? (
                                 <>
                                     {summoners.length >= 10 && (
-                                        <div>
-                                            <button
-                                                onClick={() => submitTIP()}
-                                                className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
-                                            >
-                                                {i18n._(t`send with 0.1 FTM tip for devs`)}
-                                            </button>
+                                        <div className="text-center text-white p-4 pb-4 gap-5">
+                                            给开发者打赏
+                                            <input
+                                                type="number"
+                                                className="p-2"
+                                                style={{width:60,color:'black'}}
+                                                step="0.1"
+                                                value={days}
+                                                onChange={(v) => setDays(parseFloat(v.target.value))}
+                                            /> FTM 买杯咖啡
                                         </div>
+                                        // <div>
+                                        //     <button
+                                        //         onClick={() => submitTIP()}
+                                        //         className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
+                                        //     >
+                                        //         {i18n._(t`send with 0.1 FTM tip for devs`)}
+                                        //     </button>
+                                        // </div>
                                     )}
                                     <div>
                                         <button
                                             onClick={() => submit()}
                                             className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
                                         >
-                                            {i18n._(t`send summoners`)}
+                                            {i18n._(t`send summoners to cellar`)}
                                         </button>
                                     </div>
                                 </>

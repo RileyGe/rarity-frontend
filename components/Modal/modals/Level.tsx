@@ -25,6 +25,8 @@ export default function LevelModal({ open, closeFunction, summoners }: LevelModa
     const { isApprovedForAll, setApprovalForAll } = useRarity()
     const { level_up, level_up_donate } = useRarityHelper()
 
+    const [days, setDays] = useState(0.1)
+
     const [approved, setApproved] = useState(false)
 
     const fetch_approval = useCallback(async () => {
@@ -58,46 +60,46 @@ export default function LevelModal({ open, closeFunction, summoners }: LevelModa
         }
     }
 
-    async function submitTIP() {
-        const chunks = chunkArrayByNumber(summoners, 100)
-        for (let i = 0; i < chunks.length; i++) {
-            if (i === 0) {
-                await toast.promise(
-                    level_up_donate(
-                        chunks[i].map((s) => {
-                            return s.id
-                        })
-                    ),
-                    {
-                        loading: (
-                            <b>
-                                {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
-                            </b>
-                        ),
-                        success: <b>{i18n._(t`Success`)}</b>,
-                        error: <b>{i18n._(t`Failed`)}</b>,
-                    }
-                )
-            } else {
-                await toast.promise(
-                    level_up(
-                        chunks[i].map((s) => {
-                            return s.id
-                        })
-                    ),
-                    {
-                        loading: (
-                            <b>
-                                {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
-                            </b>
-                        ),
-                        success: <b>{i18n._(t`Success`)}</b>,
-                        error: <b>{i18n._(t`Failed`)}</b>,
-                    }
-                )
-            }
-        }
-    }
+    // async function submitTIP() {
+    //     const chunks = chunkArrayByNumber(summoners, 100)
+    //     for (let i = 0; i < chunks.length; i++) {
+    //         if (i === 0) {
+    //             await toast.promise(
+    //                 level_up_donate(
+    //                     chunks[i].map((s) => {
+    //                         return s.id
+    //                     })
+    //                 ),
+    //                 {
+    //                     loading: (
+    //                         <b>
+    //                             {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
+    //                         </b>
+    //                     ),
+    //                     success: <b>{i18n._(t`Success`)}</b>,
+    //                     error: <b>{i18n._(t`Failed`)}</b>,
+    //                 }
+    //             )
+    //         } else {
+    //             await toast.promise(
+    //                 level_up(
+    //                     chunks[i].map((s) => {
+    //                         return s.id
+    //                     })
+    //                 ),
+    //                 {
+    //                     loading: (
+    //                         <b>
+    //                             {i18n._(t`Sending chunk:`)} {i + 1} of {chunks.length}{' '}
+    //                         </b>
+    //                     ),
+    //                     success: <b>{i18n._(t`Success`)}</b>,
+    //                     error: <b>{i18n._(t`Failed`)}</b>,
+    //                 }
+    //             )
+    //         }
+    //     }
+    // }
 
     async function approveHelper() {
         toast
@@ -126,21 +128,32 @@ export default function LevelModal({ open, closeFunction, summoners }: LevelModa
                             {approved ? (
                                 <>
                                     {summoners.length >= 10 && (
-                                        <div>
-                                            <button
-                                                onClick={() => submitTIP()}
-                                                className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
-                                            >
-                                                {i18n._(t`send with 0.1 FTM tip for devs`)}
-                                            </button>
+                                        <div className="text-center text-white p-4 pb-4 gap-5">
+                                            给开发者打赏
+                                            <input
+                                                type="number"
+                                                className="p-2"
+                                                style={{width:60,color:'black'}}
+                                                step="0.1"
+                                                value={days}
+                                                onChange={(v) => setDays(parseFloat(v.target.value))}
+                                            /> FTM 买杯咖啡
                                         </div>
+                                        // <div>
+                                        //     <button
+                                        //         onClick={() => submitTIP()}
+                                        //         className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
+                                        //     >
+                                        //         {i18n._(t`send with 0.1 FTM tip for devs`)}
+                                        //     </button>
+                                        // </div>
                                     )}
                                     <div>
                                         <button
                                             onClick={() => submit()}
                                             className="bg-green border-white border-2 p-2 uppercase rounded-lg mt-4"
                                         >
-                                            {i18n._(t`send summoners`)}
+                                            {i18n._(t`send summoners level up`)}
                                         </button>
                                     </div>
                                 </>

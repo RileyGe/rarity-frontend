@@ -130,7 +130,7 @@ export default function AdventureModal({ open, closeFunction, summoners }: Adven
                                 <>
                                     {summoners.length >= 10 && (
                                         <div className="text-center text-white p-4 pb-4 gap-5">
-                                            给开发者
+                                            给开发者打赏 
                                             <input
                                                 type="number"
                                                 className="p-2"
