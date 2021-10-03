@@ -16,7 +16,7 @@ const Footer = () => {
                     </div>
                     <div className="col-span-2">
                         <h2 className="md:ml-4">{i18n._(t`BUILT BY`)}:</h2>
-                        <a target="_blank" rel="noreferrer" href="https://discord.gg/cxCr8ZnW">
+                        <a className="md:ml-4" target="_blank" rel="noreferrer" href="https://discord.gg/cxCr8ZnW">
                             <span style={{ fontFamily: 'Regular' }}>赛博野兽CyberBeast</span>
                         </a>
                     </div>
