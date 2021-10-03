@@ -15,7 +15,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
 
     const filters = [
         {
-            name: 'by classes',
+            name: i18n._(`by classes`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => a.base._class - b.base._class)
@@ -23,7 +23,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by level',
+            name: i18n._(t`by level`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => b.base._level - a.base._level)
@@ -31,7 +31,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by xp',
+            name: i18n._(t`by xp`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => b.base._xp - a.base._xp)
@@ -39,7 +39,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by gold',
+            name: i18n._(t`by gold`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => b.gold.balance - a.gold.balance)
@@ -47,7 +47,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by craft materials',
+            name: i18n._(t`by craft materials`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => b.materials.balance - a.materials.balance)
@@ -55,7 +55,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by id-low to high',
+            name: i18n._(t`by id-low to high`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => a.id - b.id)
@@ -63,7 +63,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by id-high to low',
+            name: i18n._(t`by id-high to low`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => b.id - a.id)
@@ -71,7 +71,7 @@ export default function Filter({ summoners, filteredSummoners }: SelectorProps):
             },
         },
         {
-            name: 'by daycare registry ',
+            name: i18n._(t`by daycare registry`),
             func: (s: SummonerFullData[]) => {
                 const summonersFiltered: SummonerFullData[] = [].concat(s)
                 summonersFiltered.sort((a, b) => a.misc.daycare_days_paid - b.misc.daycare_days_paid)
